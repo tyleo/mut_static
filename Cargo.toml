@@ -1,0 +1,12 @@
+[dependencies]
+graphy_error = "^0.2"
+
+[package]
+authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
+description = "Provides some utils to help create mutable statics with lazy_static."
+exclude = [
+    ".gitignore",
+]
+license = "MIT"
+name = "graphy_static_util"
+version = "0.2.0"
