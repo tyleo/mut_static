@@ -1,5 +1,5 @@
 [dependencies]
-graphy_error = "^0.2"
+define_error = "4"
 
 [package]
 authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
