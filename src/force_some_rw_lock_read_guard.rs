@@ -20,7 +20,7 @@ impl <'a, T> AsRef<T> for ForceSomeRwLockReadGuard<'a, T> {
     fn as_ref(&self) -> &T {
         match self.data.deref() {
             &Some(ref some) => some,
-            &None => panic!(),
+            &None => panic!("Fatal error getting static. The static was never set. This should be impossible."),
         }
     }
 }
@@ -31,7 +31,7 @@ impl <'a, T> Deref for ForceSomeRwLockReadGuard<'a, T> {
     fn deref(&self) -> &T {
         match self.data.deref() {
             &Some(ref some) => some,
-            &None => panic!(),
+            &None => panic!("Fatal error getting static. The static was never set. This should be impossible."),
         }
     }
 }
