@@ -1,0 +1,8 @@
+// Top level tasks
+task build(type: Exec) {
+    commandLine "cargo.exe", "build"
+}
+
+task test(type: Exec) {
+    commandLine "cargo.exe", "test"
+}

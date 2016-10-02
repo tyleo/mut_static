@@ -6,7 +6,13 @@ authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
 description = "Provides some utils to help create mutable statics with lazy_static."
 exclude = [
     ".gitignore",
+    "build.gradle",
+    "gradle",
+    "gradlew",
+    "gradlew.bat",
+    "README",
+    "test/**"
 ]
 license = "MIT"
-name = "graphy_static_util"
-version = "0.3.0"
+name = "appscraps_static_util"
+version = "0.1.0"

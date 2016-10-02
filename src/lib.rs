@@ -3,11 +3,11 @@
 #[macro_use]
 extern crate error_chain;
 
-pub mod error;
+mod error;
 
-pub mod force_some_rw_lock_read_guard;
+mod force_some_rw_lock_read_guard;
 
-pub mod safe_static;
+mod safe_static;
 
 pub use error::*;
 
