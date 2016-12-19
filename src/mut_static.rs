@@ -7,14 +7,14 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 use std::sync::RwLock;
 
-pub struct SafeStatic<T> {
+pub struct MutStatic<T> {
     data: RwLock<Option<T>>,
 }
 
-impl <T> SafeStatic<T>
+impl <T> MutStatic<T>
     where T: Any {
     pub fn new() -> Self {
-        SafeStatic {
+        MutStatic {
             data: RwLock::new(None),
         }
     }

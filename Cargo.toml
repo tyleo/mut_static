@@ -1,5 +1,5 @@
 [dependencies]
-error-chain = "0.5"
+error-chain = "0.7"
 
 [package]
 authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
@@ -14,5 +14,5 @@ exclude = [
     "test/**"
 ]
 license = "MIT"
-name = "appscraps_static_util"
+name = "mut_static"
 version = "0.1.0"

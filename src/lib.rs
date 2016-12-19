@@ -7,10 +7,10 @@ mod error;
 
 mod force_some_rw_lock_read_guard;
 
-mod safe_static;
+mod mut_static;
 
 pub use error::*;
 
-pub use force_some_rw_lock_read_guard::ForceSomeRwLockReadGuard;
+pub use force_some_rw_lock_read_guard::*;
 
-pub use safe_static::SafeStatic;
+pub use mut_static::*;
