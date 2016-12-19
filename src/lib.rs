@@ -3,7 +3,7 @@
 #[macro_use]
 extern crate error_chain;
 
-mod error;
+pub mod error;
 
 mod force_some_rw_lock_read_guard;
 
