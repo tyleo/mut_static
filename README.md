@@ -24,14 +24,14 @@ fn main() {
 
     // Using a MutStatic
     {
-        let my_object = MY_OBJECT.get().unwrap();
+        let my_object = MY_OBJECT.read().unwrap();
         let my_object = my_object.deref();
         my_object.use();
     }
 
     // Using a MutStatic mutably
     {
-        let mut my_object = MY_OBJECT.get().unwrap();
+        let mut my_object = MY_OBJECT.write().unwrap();
         let mut my_object = my_object.deref_mut();
         my_object.use_mut();
 
