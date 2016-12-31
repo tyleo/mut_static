@@ -38,7 +38,7 @@ lazy_static! {
 // Declaring a MutStatic which already has data
 lazy_static! {
     pub static ref MY_STRUCT_PRESET: MutStatic<MyStruct> = {
-        MutStatic::new_with_contents(MyStruct::new(0))
+        MutStatic::from(MyStruct::new(0))
     };
 }
 
