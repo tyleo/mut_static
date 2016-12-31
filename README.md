@@ -20,7 +20,7 @@ lazy_static! {
 
 // Declaring a MutStatic which already has data
 lazy_static! {
-    pub static ref MY_OBJECT: MutStatic<MyObject> = {
+    pub static ref MY_OBJECT_PRESET: MutStatic<MyObject> = {
         MutStatic::new_with_contents(MyObject::new())
     };
 }
