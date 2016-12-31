@@ -13,6 +13,9 @@ pub struct MutStatic<T> {
     is_set: Cell<bool>
 }
 
+unsafe impl <T> Sync for MutStatic<T>
+    where T: Sync { }
+
 impl <T> MutStatic<T>
     where T: Any {
     pub fn new() -> Self {
