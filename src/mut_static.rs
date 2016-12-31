@@ -1,5 +1,5 @@
+use { ForceSomeRwLockReadGuard, ForceSomeRwLockWriteGuard };
 use error::*;
-use ForceSomeRwLockReadGuard;
 use std::any::Any;
 use std::error::Error as StdError;
 use std::mem;
@@ -19,7 +19,7 @@ impl <T> MutStatic<T>
         }
     }
 
-    pub fn get(&self) -> Result<ForceSomeRwLockReadGuard<T>> {
+    pub fn read(&self) -> Result<ForceSomeRwLockReadGuard<T>> {
         match self.data.read() {
             Ok(ok) => {
                 if let &None = ok.deref() {
@@ -44,6 +44,18 @@ impl <T> MutStatic<T>
             Err(ErrorKind::StaticIsAlreadySet.into())
         } else {
             Ok(())
+        }
+    }
+
+    pub fn write(&self) -> Result<ForceSomeRwLockWriteGuard<T>> {
+        match self.data.write() {
+            Ok(ok) => {
+                if let &None = ok.deref() {
+                    return Err(ErrorKind::StaticWasNeverSet.into())
+                }
+                Ok(ForceSomeRwLockWriteGuard::new(ok))
+            },
+            Err(err) => Err(ErrorKind::PoisonError(err.description().to_string(), format!("{}", err)).into()),
         }
     }
 }

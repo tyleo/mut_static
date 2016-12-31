@@ -3,7 +3,8 @@ error-chain = "0.7"
 
 [package]
 authors = ["Tyler Wolf Leonhardt <tyler.wolf.leonhardt@gmail.com>"]
-description = "Provides some utils to help create mutable statics with lazy_static."
+description = "Provides a struct to help create mutable statics with lazy_static."
+documentation = "https://github.com/tyleo/mut_static.git"
 exclude = [
     ".gitignore",
     "build.gradle",
@@ -13,6 +14,12 @@ exclude = [
     "README",
     "test/**"
 ]
+keywords = [
+    "lazy_static",
+    "mut",
+    "static"
+]
 license = "MIT"
 name = "mut_static"
-version = "0.1.0"
+repository = "https://github.com/tyleo/mut_static.git"
+version = "1.0.0"
