@@ -18,7 +18,7 @@ lazy_static! {
     };
 }
 
-fn main() -> {
+fn main() {
     // Setting a MutStatic
     MY_OBJECT.set(MyObject::new()).unwrap();
 
