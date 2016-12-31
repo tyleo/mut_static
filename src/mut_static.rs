@@ -19,6 +19,12 @@ impl <T> MutStatic<T>
         }
     }
 
+    pub fn new_with_contents(object: T) -> Self {
+        MutStatic {
+            data: RwLock::new(Some(object)),
+        }
+    }
+
     pub fn read(&self) -> Result<ForceSomeRwLockReadGuard<T>> {
         match self.data.read() {
             Ok(ok) => {

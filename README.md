@@ -18,6 +18,13 @@ lazy_static! {
     };
 }
 
+// Declaring a MutStatic which already has data
+lazy_static! {
+    pub static ref MY_OBJECT: MutStatic<MyObject> = {
+        MutStatic::new_with_contents(MyObject::new())
+    };
+}
+
 fn main() {
     // Setting a MutStatic
     MY_OBJECT.set(MyObject::new()).unwrap();
