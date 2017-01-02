@@ -1,7 +1,6 @@
 use { ForceSomeRwLockReadGuard, ForceSomeRwLockWriteGuard };
 use error::*;
 use std::any::Any;
-use std::cell::Cell;
 use std::error::Error as StdError;
 use std::mem;
 use std::ops::Deref;
@@ -10,7 +9,6 @@ use std::sync::RwLock;
 
 pub struct MutStatic<T> {
     data: RwLock<Option<T>>,
-    is_set: Cell<bool>
 }
 
 unsafe impl <T> Sync for MutStatic<T>
@@ -20,13 +18,21 @@ impl <T> MutStatic<T>
     where T: Any {
     pub fn new() -> Self {
         MutStatic {
-            data: RwLock::new(None),
-            is_set: Cell::new(false)
+            data: RwLock::new(None)
         }
     }
 
-    pub fn is_set(&self) -> bool {
-        self.is_set.get()
+    pub fn is_set(&self) -> Result<bool> {
+        match self.data.read() {
+            Ok(ok) => {
+                if let &Some(_) = ok.deref() {
+                    Ok(true)
+                } else {
+                    Ok(false)
+                }
+            },
+            Err(err) => Err(ErrorKind::PoisonError(err.description().to_string(), format!("{}", err)).into()),
+        }
     }
 
     pub fn read(&self) -> Result<ForceSomeRwLockReadGuard<T>> {
@@ -53,7 +59,6 @@ impl <T> MutStatic<T>
         if let Some(_) = mem::replace(data_ref, Some(value)) {
             Err(ErrorKind::StaticIsAlreadySet.into())
         } else {
-            self.is_set.set(true);
             Ok(())
         }
     }
@@ -74,8 +79,7 @@ impl <T> MutStatic<T>
 impl <T> From<T> for MutStatic<T> {
     fn from(value: T) -> Self {
         MutStatic {
-            data: RwLock::new(Some(value)),
-            is_set: Cell::new(true)
+            data: RwLock::new(Some(value))
         }
     }
 }
