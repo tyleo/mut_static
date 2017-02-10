@@ -12,7 +12,7 @@ use mut_static::MutStatic;
 use std::mem;
 use std::ops::DerefMut;
 
-struct MyStruct { value: usize }
+pub struct MyStruct { value: usize }
 
 impl MyStruct {
     pub fn new(value: usize) -> Self {
