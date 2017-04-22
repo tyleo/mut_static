@@ -21,10 +21,10 @@ impl TestStruct {
 #[test]
 fn test() {
     let test_obj = MutStatic::new();
-    assert!(test_obj.is_set() == false);
+    assert!(test_obj.is_set().unwrap() == false);
 
     test_obj.set(TestStruct::new(0)).unwrap();
-    assert!(test_obj.is_set() == true);
+    assert!(test_obj.is_set().unwrap() == true);
 
     {
         let test_obj = test_obj.read().unwrap();
