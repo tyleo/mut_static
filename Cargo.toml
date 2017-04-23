@@ -1,5 +1,5 @@
 [dependencies.error-chain]
-version = "0.9"
+version = "0.10"
 default-features = false
 
 [package]
