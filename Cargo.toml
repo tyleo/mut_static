@@ -23,4 +23,4 @@ keywords = [
 license = "MIT"
 name = "mut_static"
 repository = "https://github.com/tyleo/mut_static.git"
-version = "4.0.0"
+version = "5.0.0"
